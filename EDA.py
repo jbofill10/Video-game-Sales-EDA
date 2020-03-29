@@ -14,14 +14,14 @@ def eda(df):
 
     plt.figure(figsize=(13.7, 9))
 
-    sns.barplot(x='variable', y='value', data=pd.melt(box_plot_df), palette='plasma')
+    sns.barplot(x='variable', y='value', data=pd.melt(box_plot_df), palette='plasma', ec='Black')
 
     plt.ylabel('Global Sales (in Millions)', fontsize=22)
     plt.xlabel('Year', fontsize=22)
     plt.title('Global Sales (in Millions) throughout the Years', fontsize=24, fontweight='bold')
     plt.xticks(rotation=45, fontsize=16)
     plt.yticks(fontsize=16)
-    #plt.savefig('Charts/Yearly_Global_Sales.png')
+    plt.savefig('Charts/Yearly_Global_Sales.png')
     plt.show()
 
 
