@@ -43,7 +43,55 @@ def eda(df):
                 int(width),
                 ha="center", fontsize=14)
 
-    #plt.savefig('Charts/All_Time_Platform_Releases.png')
-
+    plt.savefig('Charts/All_Time_Platform_Releases.png')
     plt.show()
+    
+    # Most successful genres
+    style.use('seaborn-poster')
+    genre_global_sales = df.groupby(['Genre'])['Global_Sales'].sum().sort_values(ascending=False)
+    print(genre_global_sales)
+    sns.barplot(x=genre_global_sales.index, y=genre_global_sales.values, ec='Black', palette='twilight')
+    plt.xticks(rotation=45)
+    plt.xlabel('Genre', fontsize=20)
+    plt.ylabel('Global Sales (in Millions)', fontsize=20)
+    plt.title('Global Sales of Genres from 1980-2016', fontweight='bold', fontsize=24)
+    plt.savefig('Charts/GlobalSales_ofGenres')
+    plt.show()
+
+    top5_genres_list = df.groupby(['Genre'])['Global_Sales'].sum().sort_values(ascending=False).head(5).index
+    print([i for i in top5_genres_list])
+    top5_genre_df = df[df.Genre.isin(top5_genres_list)]
+    fig, (ax0,ax1) = plt.subplots(2,2, figsize=(15,10))
+
+    fig.suptitle('Top 5 Genres and their Sales (in Millions) Respective to their Country', fontsize=20, fontweight = 'bold')
+
+    sns.lineplot(x='Year', y='NA_Sales', hue='Genre', data=top5_genre_df, ci=None, ax=ax0[0], palette='Set1')
+
+    sns.lineplot(x='Year', y='EU_Sales', hue='Genre', data=top5_genre_df, ci=None, ax=ax0[1], palette='Set1')
+
+    sns.lineplot(x='Year', y='JP_Sales', hue='Genre', data=top5_genre_df, ci=None, ax=ax1[0], palette='Set1')
+
+    sns.lineplot(x='Year', y='Other_Sales', hue='Genre', data=top5_genre_df, ci=None, ax=ax1[1], palette='Set1')
+
+    ax0[0].legend(loc='upper right')
+    ax0[1].legend(loc='upper right')
+    ax1[0].legend(loc='upper right')
+    ax1[1].legend(loc='upper right')
+
+    ax1[1].set_ylim(-0.1,1.6)
+
+    ax0[0].set_ylabel('NA Sales (in Millions)', fontsize=16)
+    ax0[1].set_ylabel('EU Sales (in Millions)', fontsize=16)
+    ax1[0].set_ylabel('Japan Sales (in Millions)', fontsize=16)
+    ax1[1].set_ylabel('Other Sales (in Millions)', fontsize=16)
+
+    ax0[0].set_xlabel('Year', fontsize=16)
+    ax0[1].set_xlabel('Year', fontsize=16)
+    ax1[0].set_xlabel('Year', fontsize=16)
+    ax1[1].set_xlabel('Year', fontsize=16)
+
+    plt.savefig('Charts/CountryRespectiveSales')
+    plt.show()
+
+
 
