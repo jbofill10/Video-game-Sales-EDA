@@ -94,5 +94,46 @@ def eda(df):
     plt.savefig('Charts/CountryRespectiveSales')
     plt.show()
 
+    
+    style.use('seaborn-poster')
+    
+    top10_publishers_list = df.groupby(['Publisher'])['Global_Sales']\
+        .sum()\
+        .sort_values(ascending=False).head(10).index
 
+    zero_to_five_publishers_list = top10_publishers_list[0:5]
+    five_to_ten_publishers_list = top10_publishers_list[5:]
+    zero_to_five_publishers_df = df[df.Publisher.isin(zero_to_five_publishers_list)]
+    five_to_ten_publishers_df = df[df.Publisher.isin(five_to_ten_publishers_list)]
+    
+
+    fig, (ax0, ax1) = plt.subplots(2,1)
+    # 1 - 5 in Global Sales
+    sns.lineplot(x='Year', y='Global_Sales',
+                 data=zero_to_five_publishers_df, hue='Publisher',
+                 ci=None, ax=ax0, palette='Set1')
+
+    ax0.legend(prop={'size':11.5})
+
+    # 5-10 in Global Sales
+    sns.lineplot(x='Year', y='Global_Sales',
+                 data=five_to_ten_publishers_df, hue='Publisher',
+                 ci=None, ax=ax1, palette='Set1')
+
+    ax0.set_title('Top 1-5 Publishers by Global Sales')
+    ax0.set_ylabel('Global Sales (in Millions)')
+
+    ax0.spines['right'].set_visible(False)
+    ax0.spines['top'].set_visible(False)
+
+    ax1.set_title('Top 5-10 Publishers by Global Sales')
+    ax1.set_ylabel('Global Sales (in Millions)')
+    ax1.legend(loc='upper center', prop={'size': 11.5})
+    ax1.set_ylim(-0.5, 5)
+
+    ax1.spines['right'].set_visible(False)
+    ax1.spines['top'].set_visible(False)
+
+    plt.savefig('Charts/GlobalSalesPublishers.png')
+    plt.show()
 
