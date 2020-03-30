@@ -22,3 +22,30 @@ Interesting to see that Action games are the most successful.
 ## Top 5 Genres and their Revenue Respective to their Country
 ![alt text](https://github.com/jbofill10/Video-game-Sales-EDA/blob/master/Charts/CountryRespectiveSales.png)
 What's interesting here is that Action is never any countries favorite genre, except for the spike in EU from 1990-1995 -- yet it has the most global sales out of all the genres.
+
+## Correlation between Publisher and Global Sales
+I split the top 10 publishers with the most global sales into two graphs and see if there were any trends among them.
+![alt text](https://github.com/jbofill10/Video-game-Sales-EDA/blob/master/Charts/GlobalSalesPublishers.png)
+Pretty interesting to see how close all the publishers' global sales were all close to each other, but near 2015 and 2016, you can see Sony and Ubisoft beginning to take off, while all the others fall.
+
+# Modeling
+
+## Using Linear Regression to predict Global Sales based on Features (Not forecasting)
+So I took the features "Platform", "Genre", and "Publisher" and encoded them into numbers so the machine could interpret them.
+
+I dropped the rank, year, and name column as I believed year would cause overfitting and the rest wouldn't contribute at all to accuracy.
+
+The target label is: Global Sales  
+
+My next step was to implement cross validation to get a more realistic result of how my model would perform.
+Here are the results:  
+![alt text](https://github.com/jbofill10/Video-game-Sales-EDA/blob/master/model_results/LinearRegression.png)
+
+So obviously, the scores worsened, but not by a large margin.  
+The target's unit is in millions, so on average, we are getting values incorrect by ~$700,000. This isn't terrible. Ideally, I would like the margin to be smaller, but considering the fact that it can still provide some idea of how good a game will do depending on the Platform, Genre, and Publisher, I think this is a good start.
+
+
+
+
+
+
