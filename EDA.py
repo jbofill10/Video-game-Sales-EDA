@@ -51,7 +51,7 @@ def eda(df):
     genre_global_sales = df.groupby(['Genre'])['Global_Sales'].sum().sort_values(ascending=False)
     print(genre_global_sales)
     sns.barplot(x=genre_global_sales.index, y=genre_global_sales.values, ec='Black', palette='twilight')
-    plt.xticks(rotation=45, fontsize=12)
+    plt.xticks(rotation=20, fontsize=10)
     plt.xlabel('Genre', fontsize=18)
     plt.ylabel('Global Sales (in Millions)', fontsize=18)
     plt.title('Global Sales of Genres from 1980-2016', fontweight='bold', fontsize=22)
