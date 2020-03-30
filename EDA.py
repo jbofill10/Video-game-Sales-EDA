@@ -51,17 +51,18 @@ def eda(df):
     genre_global_sales = df.groupby(['Genre'])['Global_Sales'].sum().sort_values(ascending=False)
     print(genre_global_sales)
     sns.barplot(x=genre_global_sales.index, y=genre_global_sales.values, ec='Black', palette='twilight')
-    plt.xticks(rotation=45)
-    plt.xlabel('Genre', fontsize=20)
-    plt.ylabel('Global Sales (in Millions)', fontsize=20)
-    plt.title('Global Sales of Genres from 1980-2016', fontweight='bold', fontsize=24)
+    plt.xticks(rotation=45, fontsize=12)
+    plt.xlabel('Genre', fontsize=18)
+    plt.ylabel('Global Sales (in Millions)', fontsize=18)
+    plt.title('Global Sales of Genres from 1980-2016', fontweight='bold', fontsize=22)
     plt.savefig('Charts/GlobalSales_ofGenres')
+    plt.tight_layout()
     plt.show()
 
     top5_genres_list = df.groupby(['Genre'])['Global_Sales'].sum().sort_values(ascending=False).head(5).index
     print([i for i in top5_genres_list])
     top5_genre_df = df[df.Genre.isin(top5_genres_list)]
-    fig, (ax0,ax1) = plt.subplots(2,2, figsize=(15,10))
+    fig, (ax0,ax1) = plt.subplots(2,2, figsize=(17,10))
 
     fig.suptitle('Top 5 Genres and their Sales (in Millions) Respective to their Country', fontsize=20, fontweight = 'bold')
 
