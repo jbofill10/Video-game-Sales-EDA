@@ -94,7 +94,6 @@ def eda(df):
     plt.savefig('Charts/CountryRespectiveSales')
     plt.show()
 
-    
     style.use('seaborn-poster')
     
     top10_publishers_list = df.groupby(['Publisher'])['Global_Sales']\
@@ -108,6 +107,8 @@ def eda(df):
     
 
     fig, (ax0, ax1) = plt.subplots(2,1)
+    plt.subplots_adjust(hspace=0.33, top=.95)
+
     # 1 - 5 in Global Sales
     sns.lineplot(x='Year', y='Global_Sales',
                  data=zero_to_five_publishers_df, hue='Publisher',
@@ -135,5 +136,6 @@ def eda(df):
     ax1.spines['top'].set_visible(False)
 
     plt.savefig('Charts/GlobalSalesPublishers.png')
+
     plt.show()
 
