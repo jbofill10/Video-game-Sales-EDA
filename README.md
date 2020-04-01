@@ -4,6 +4,9 @@
 3. Preprocessing
 4. Modeling
 5. Summary
+
+Kaggle Kernel can be found here: https://www.kaggle.com/jbofill/video-game-eda-and-predictive-modeling
+
 Let's begin by importing what we need for now and read the file
 
 # Data Cleaning
