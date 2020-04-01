@@ -104,6 +104,7 @@ import pandas as pd
     plt.yticks(fontsize=16)
     plt.show()
 ```
+![alt text](https://github.com/jbofill10/Video-game-Sales-EDA/blob/master/Charts/Yearly_Global_Sales.png)
 
 Personally, I found it very interesting that the peak was in 2007-2009 considering that nowadays you can download copies of the game instead of having to go to GameStop or something of the sort. (Note that the peak is a bit taller because we filled the nas with the mode)
 
@@ -131,6 +132,7 @@ for p in ax.patches:
 
 plt.show()
 ```
+![alt text](https://github.com/jbofill10/Video-game-Sales-EDA/blob/master/Charts/All_Time_Platform_Releases.png)
 
 I found it interesting that PS2 had the most releases over all of the previous consoles -- and that the Nintendo DS had the most. 
 
@@ -149,6 +151,7 @@ plt.title('Global Sales of Genres from 1980-2016', fontweight='bold', fontsize=2
 plt.tight_layout()
 plt.show()
 ```
+![alt text](https://github.com/jbofill10/Video-game-Sales-EDA/blob/master/Charts/GlobalSales_ofGenres.png)
 
 I feel like Action is a meta genre, as all genres here can be action games.
 
@@ -164,13 +167,17 @@ fig, (ax0,ax1) = plt.subplots(2,2, figsize=(17,10))
 
 fig.suptitle('Top 5 Genres and their Sales (in Millions) Respective to their Country', fontsize=20, fontweight = 'bold')
 
-sns.lineplot(x='Year', y='NA_Sales', hue='Genre', data=top5_genre_df, ci=None, ax=ax0[0], palette='Set1')
+sns.lineplot(x='Year', y='NA_Sales', hue='Genre', 
+    data=top5_genre_df, ci=None, ax=ax0[0], palette='Set1')
 
-sns.lineplot(x='Year', y='EU_Sales', hue='Genre', data=top5_genre_df, ci=None, ax=ax0[1], palette='Set1')
+sns.lineplot(x='Year', y='EU_Sales', hue='Genre', 
+    data=top5_genre_df, ci=None, ax=ax0[1], palette='Set1')
 
-sns.lineplot(x='Year', y='JP_Sales', hue='Genre', data=top5_genre_df, ci=None, ax=ax1[0], palette='Set1')
+sns.lineplot(x='Year', y='JP_Sales', hue='Genre', 
+    data=top5_genre_df, ci=None, ax=ax1[0], palette='Set1')
 
-sns.lineplot(x='Year', y='Other_Sales', hue='Genre', data=top5_genre_df, ci=None, ax=ax1[1], palette='Set1')
+sns.lineplot(x='Year', y='Other_Sales', hue='Genre', 
+    data=top5_genre_df, ci=None, ax=ax1[1], palette='Set1')
 
 ax0[0].legend(loc='upper right')
 ax0[1].legend(loc='upper right')
@@ -192,6 +199,7 @@ ax1[1].set_xlabel('Year', fontsize=16)
 
 plt.show()
 ```
+![alt text](https://github.com/jbofill10/Video-game-Sales-EDA/blob/master/Charts/CountryRespectiveSales.png)
 
 Due to missing values, I believe this is why Role-Playing has really weird behavior in the Other Sales graph.
 
@@ -244,6 +252,7 @@ ax1.spines['top'].set_visible(False)
 
 plt.show()
 ```
+![alt text](https://github.com/jbofill10/Video-game-Sales-EDA/blob/master/Charts/GlobalSalesPublishers.png)
 
 Pretty interesting timeline for the Sega genesis. Similar behavior to that of Activisions. 
 
