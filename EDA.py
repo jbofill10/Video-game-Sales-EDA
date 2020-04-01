@@ -3,6 +3,7 @@ import matplotlib.style as style
 import seaborn as sns
 import pandas as pd
 
+
 def eda(df):
     # Global sales over the years
     g_sales_over_years = df.groupby(['Year'])['Global_Sales'].sum()
@@ -23,7 +24,6 @@ def eda(df):
     plt.yticks(fontsize=16)
     plt.savefig('Charts/Yearly_Global_Sales.png')
     plt.show()
-
 
     style.use('seaborn-poster')
 

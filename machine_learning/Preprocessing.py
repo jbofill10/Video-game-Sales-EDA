@@ -5,7 +5,7 @@ import pandas as pd
 def preprocessing(df):
 
     categorical_labels = ['Platform', 'Genre', 'Publisher']
-    numerical_lables = ['Global_Sales']
+    numerical_labels = ['Global_Sales']
     enc = LabelEncoder()
     encoded_df = pd.DataFrame(columns=['Platform', 'Genre', 'Publisher', 'Global_Sales'])
     
@@ -16,7 +16,7 @@ def preprocessing(df):
         
         encoded_df[label] = encoded_temp_col
 
-    for label in numerical_lables:
+    for label in numerical_labels:
         encoded_df[label] = df[label].values
 
     return encoded_df

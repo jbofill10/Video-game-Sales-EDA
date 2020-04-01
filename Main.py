@@ -7,7 +7,7 @@ def main():
 
     df = d_c.clean_data(df)
 
-    eda.eda(df)
+    #eda.eda(df)
 
     # Stuck on whether or not the name column is important. Brand names are really important,
     # but I don't know if I have the information or model sophisticated enough to consider that.
